@@ -39,11 +39,19 @@ MyApp.controller("AddController", function ($scope, TaskApi) {
             .then(function (response) {
                 alert("Task added successfully!!");
                 $scope.Task_Description = undefined;
-                $scope.Priority = undefined;
+                $scope.Priority = 0;
                 $scope.Parent_ID = undefined;
                 $scope.Start_Date = undefined;
                 $scope.End_Date = undefined;
-            })
+            })       
+    }
+
+    $scope.resetTask = function () {
+        $scope.Task_Description = undefined;
+        $scope.Priority = 0;
+        $scope.Parent_ID = undefined;
+        $scope.Start_Date = undefined;
+        $scope.End_Date = undefined;
     }
 });
 
@@ -53,13 +61,6 @@ MyApp.controller("EditController", function ($scope) {
     $scope.message = "In Edit"
 
 });
-
-MyApp.controller("DeleteController", function ($scope) {
-
-    $scope.message = "In Delete"
-
-});
-
 
 
 MyApp.controller("HomeController", function ($scope, TaskApi) {
@@ -88,7 +89,7 @@ MyApp.controller("HomeController", function ($scope, TaskApi) {
     }
 
     $scope.editTask = function (task) {
-        alert("esawdwefd")
+
     }
 
 
