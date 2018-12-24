@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/bootstrap-datepicker.js"></script>
+    <script src="Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="service.js"></script>
+    <script src="demo.js"></script>    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center text-danger">Task Manager</h1>
+        <hr />
+        <nav role="navigation" class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+                <li><a ng-href="#!Add">Add Task</a> </li>
+                <li class="active"><a ng-href="#!Home">View Task</a> </li>
+                <li><a ng-href="#!Edit">Edit Task</a> </li>
+            </ul>
+        </nav>
+        <div ng-view/>
+    </div>
+</body>
+</html>

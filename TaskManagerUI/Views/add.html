@@ -1,0 +1,38 @@
+﻿<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form>
+            <div class="form-group">
+                <label for="inputDescription">Task</label>
+                <input type="text" ng-model="Task_Description" class="form-control input-lg" placeholder="Task">
+            </div>
+            <div class="form-group">
+                <label for="inputPriority">Priority</label>
+                <input type="range" min="0" max="30" ng-model="Priority" class="form-control input-lg" placeholder="Priority">
+            </div>
+            <div class="form-group">
+                <label for="inputParentTask">Parent Task</label>
+                <input type="text" ng-model="Parent_ID" class="form-control input-lg" placeholder="Parent Task">
+            </div>
+            <div class="form-group">
+                <label for="inputStartDate">Start Date</label>
+                <input type="date" ng-model="Start_Date" class="form-control input-lg" placeholder="Start Date">
+            </div>
+            <div class="form-group">
+                <label for="inputEndDate">End Date</label>
+                <input type="date" ng-model="End_Date" class="form-control input-lg"  placeholder="End Date">
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <button ng-click="addTask()" class="btn btn-info form-control input-lg">Add Task</button>
+                        </td>
+                        <td>
+                            <button ng-click="resetTask()" class="btn btn-info form-control input-lg">Reset</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
