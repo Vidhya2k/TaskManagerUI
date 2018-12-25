@@ -12,10 +12,6 @@ MyApp.config(['$routeProvider',
                 templateUrl: 'Views/edit.html',
                 controller: 'EditController'
             }).
-            when('/Delete', {
-                templateUrl: 'Views/delete.html',
-                controller: 'DeleteController'
-            }).
             when('/Home', {
                 templateUrl: 'Views/home.html',
                 controller: 'HomeController'
@@ -58,7 +54,6 @@ MyApp.controller("AddController", function ($scope, TaskApi) {
    
 MyApp.controller("EditController", function ($scope) {
 
-    $scope.message = "In Edit"
 
 });
 
@@ -88,23 +83,8 @@ MyApp.controller("HomeController", function ($scope, TaskApi) {
         });
     }
 
-    $scope.editTask = function (task) {
+    $scope.editTask = function (task)
+    {
 
     }
-
-
-    //$scope.editTask = function (task) {
-    //    var taskToEdit = {
-    //        'Task_Description': task.Task_Description,
-    //        'Priority': task.Priority,
-    //        'Parent_ID': task.Parent_ID,
-    //        'Start_Date': task.Start_Date,
-    //        'End_Date': task.End_Date,
-    //        'Task_ID': task.Task_ID
-    //    };
-
-    //    TaskApi.editTask(taskToEdit).then(function (response) {
-    //        alert('Task ended successfully!')
-    //    });
-    //}
 });
