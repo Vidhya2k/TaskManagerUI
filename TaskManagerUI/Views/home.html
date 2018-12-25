@@ -1,75 +1,72 @@
 ﻿<div class="row">
-    <div class="row">
-        <div class="col-md-9 col-md-offset-1">
-            <table style="width: 100%">
+    <div class="col-md-9 col-md-offset-1">
+        <table style="width: 100%">
+            <tr>
+                <td colspan="2">
+                    <label for="inputTask">Task</label>
+                    <input type="text" placeholder="Type Task" class="input-lg form-control" ng-model="textFilter.Task_Description" />
+                </td>
+                <td colspan="2">
+                    <label for="inputParentTask">Parent Task</label>
+                    <input type="text" placeholder="Type Parent Task" class="input-lg form-control" ng-model="textFilter.Parent_ID" />
+                </td>
+            </tr>
+            <tr style="height: 10px" />
+            <tr>
+                <td>
+                    <label for="inputPriorityFrom">Priority From</label>
+                    <input type="text" placeholder="Type Priority From" class="input-lg form-control" ng-model="textFilter.Priority" />
+                </td>
+                <td>
+                    <label for="inputPriorityTo">Priority To</label>
+                    <input type="text" placeholder="Type Priority To" class="input-lg form-control" ng-model="textFilter.Priority" />
+                </td>
+                <td>
+                    <label for="inputPriorityFrom">Start Date</label>
+                    <input type="date" placeholder="Type Priority From" class="input-lg form-control" ng-model="textFilter.Start_Date" />
+                </td>
+                <td>
+                    <label for="inputPriorityTo">End Date</label>
+                    <input type="date" placeholder="Type Priority To" class="input-lg form-control" ng-model="textFilter.End_Date" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table class="table table-striped table-bordered">
+            <thead>
                 <tr>
-                    <td colspan="2">
-                        <label for="inputTask">Task</label>
-                        <input type="text" placeholder="Type Task" class="input-lg form-control" ng-model="textFilter.Task_Description" />
-                    </td>
-                    <td colspan="2">
-                        <label for="inputParentTask">Parent Task</label>
-                        <input type="text" placeholder="Type Parent Task" class="input-lg form-control" ng-model="textFilter.Parent_ID" />
-                    </td>
+                    <th>Task</th>
+                    <th>Parent</th>
+                    <th>Priority</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-                <tr style="height: 10px"/>
-                <tr>
-                    <td>
-                        <label for="inputPriorityFrom">Priority From</label>
-                        <input type="text" placeholder="Type Priority From" class="input-lg form-control" ng-model="textFilter.Priority" />
-                    </td>
-                    <td>
-                        <label for="inputPriorityTo">Priority To</label>
-                        <input type="text" placeholder="Type Priority To" class="input-lg form-control" ng-model="textFilter.Priority" />
-                    </td>
-                    <td>
-                        <label for="inputPriorityFrom">Priority From</label>
-                        <input type="date" placeholder="Type Priority From" class="input-lg form-control" ng-model="textFilter.Start_Date" />
-                    </td>
-                    <td>
-                        <label for="inputPriorityTo">Priority To</label>
-                        <input type="date" placeholder="Type Priority To" class="input-lg form-control" ng-model="textFilter.End_Date" />
-                    </td>
-                </tr>
-            </table>          
-            <br/>
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Task</th>
-                        <th>Parent</th>
-                        <th>Priority</th>
-                        <th>Start</th>
-                        <th>End</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tr ng-repeat="task in tasks | filter:textFilter">
-                    <td>
-                        {{task.Task_Description}}
-                    </td>
-                    <td>
-                        {{task.Parent_ID}}
-                    </td>
-                    <td>
-                        {{task.Priority}}
-                    </td>
-                    <td>
-                        {{task.Start_Date | date:'MM/dd/yyyy'}}
-                    </td>
-                    <td>
-                        {{task.End_Date | date:'MM/dd/yyyy'}}
-                    </td>
-                    <td>
-                        <button ng-click="editTask(task)">Edit</button>
-                    </td>
-                    <td>
-                        <button ng-click="updateEndDate(task)">End Task</button>
-                        
-                        </td>
-                </tr>
-            </table>
-        </div>
+            </thead>
+            <tr ng-repeat="task in tasks | filter:textFilter">
+                <td>
+                    {{task.Task_Description}}
+                </td>
+                <td>
+                    {{task.Parent_ID}}
+                </td>
+                <td>
+                    {{task.Priority}}
+                </td>
+                <td>
+                    {{task.Start_Date | date:'MM/dd/yyyy'}}
+                </td>
+                <td>
+                    {{task.End_Date | date:'MM/dd/yyyy'}}
+                </td>
+                <th>
+                    <a href="#!/Edit/{{task.Task_ID}}">Edit Task</a>
+                </th>
+                <th>
+                    <a href="#" ng-click="updateEndDate(task)">End Task</a>
+                </th>
+            </tr>
+        </table>
     </div>
 </div>

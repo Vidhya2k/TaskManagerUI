@@ -12,6 +12,14 @@ MyApp.config(['$routeProvider',
                 templateUrl: 'Views/edit.html',
                 controller: 'EditController'
             }).
+            when('/Edit/:id', {
+                templateUrl: 'Views/edit.html',
+                controller: 'EditController'
+            }).
+            when('/Delete', {
+                templateUrl: 'Views/delete.html',
+                controller: 'DeleteController'
+            }).
             when('/Home', {
                 templateUrl: 'Views/home.html',
                 controller: 'HomeController'
@@ -22,7 +30,6 @@ MyApp.config(['$routeProvider',
     }]);
 
 MyApp.controller("AddController", function ($scope, TaskApi) {
-
     $scope.addTask = function () {
         var taskToAdd = {
             'Task_Description': $scope.Task_Description,
@@ -50,11 +57,35 @@ MyApp.controller("AddController", function ($scope, TaskApi) {
         $scope.End_Date = undefined;
     }
 });
-
    
-MyApp.controller("EditController", function ($scope) {
+MyApp.controller("EditController", function ($scope, TaskApi, $routeParams)
+{
+    $scope.RecordToEdit = $routeParams.id; // get the parameter
+    getTaskById();
+    function getTaskById() {
+        TaskApi.getTasksById($routeParams.id).then(function (task) {
+            $scope.Task_Description = task.data.Task_Description;
+            $scope.Priority = task.data.Priority;
+            $scope.Parent_ID = task.data.Parent_ID;
+            $scope.Start_Date = new Date(task.data.Start_Date);
+            $scope.End_Date = new Date(task.data.End_Date);
+        })
+    }  
 
+    $scope.editTask = function () {
+        var taskToEdit = {
+            'Task_Description': $scope.Task_Description,
+            'Priority': $scope.Priority,
+            'Parent_ID': $scope.Parent_ID,
+            'Start_Date': $scope.Start_Date,
+            'End_Date': $scope.End_Date,
+            'Task_ID': $scope.RecordToEdit
+        };
 
+        TaskApi.editTask(taskToEdit).then(function (response) {
+            alert('Task saved successfully!')
+        });
+    }
 });
 
 
@@ -81,10 +112,5 @@ MyApp.controller("HomeController", function ($scope, TaskApi) {
         TaskApi.editTask(taskToEdit).then(function (response) {
             alert('Task ended successfully!')
         });
-    }
-
-    $scope.editTask = function (task)
-    {
-
-    }
+    }    
 });

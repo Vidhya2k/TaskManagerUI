@@ -7,10 +7,15 @@ TaskManagerService.factory('TaskApi', function ($http) {
     var urlBase = "http://localhost:49968/api";
     var TaskApi = {};
 
-
     TaskApi.getTasks = function()
     {
         var url = urlBase + '/tasks';
+        var result = $http.get(url);
+        return result;
+    };
+
+    TaskApi.getTasksById = function (taskId) {
+        var url = urlBase + '/tasks/' + taskId;
         var result = $http.get(url);
         return result;
     };
